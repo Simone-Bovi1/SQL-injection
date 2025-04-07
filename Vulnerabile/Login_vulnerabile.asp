@@ -1,6 +1,6 @@
 <%
 Set conn = Server.CreateObject("ADODB.Connection")
-conn.Open "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Server.MapPath("database.accdb")
+conn.Open "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Server.MapPath("Database.accdb")
 
 user = Request.QueryString("user")
 
