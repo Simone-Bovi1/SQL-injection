@@ -5,16 +5,10 @@ conn.Open "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Server.MapPath("dat
 username = Request.Form("username")
 password = Request.Form("password")
 
-Set cmd = Server.CreateObject("ADODB.Command")
-cmd.ActiveConnection = conn
-cmd.CommandText = "INSERT INTO utenti (username, password) VALUES (?, ?)"
-cmd.CommandType = 1 ' adCmdText
-
-cmd.Parameters.Append cmd.CreateParameter("username", 200, 1, 255, username) ' adVarChar
-cmd.Parameters.Append cmd.CreateParameter("password", 200, 1, 255, password)
+sql = "INSERT INTO utenti (username, password) VALUES ('" & username & "', '" & password & "')"
 
 On Error Resume Next
-cmd.Execute
+conn.Execute(sql)
 If Err.Number = 0 Then
     Response.Write("Registrazione completata!")
 Else
@@ -22,7 +16,6 @@ Else
 End If
 On Error GoTo 0
 
-Set cmd = Nothing
 conn.Close
 Set conn = Nothing
 %>

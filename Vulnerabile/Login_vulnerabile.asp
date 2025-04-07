@@ -4,14 +4,9 @@ conn.Open "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Server.MapPath("dat
 
 user = Request.QueryString("user")
 
-Set cmd = Server.CreateObject("ADODB.Command")
-cmd.ActiveConnection = conn
-cmd.CommandText = "SELECT * FROM utenti WHERE username = ?"
-cmd.CommandType = 1 ' adCmdText
+sql = "SELECT * FROM utenti WHERE username = '" & user & "'"
 
-cmd.Parameters.Append cmd.CreateParameter("username", 200, 1, 255, user) ' adVarChar = 200
-
-Set rs = cmd.Execute
+Set rs = conn.Execute(sql)
 
 If Not rs.EOF Then
     Response.Write("Benvenuto, " & rs("username"))
@@ -22,6 +17,5 @@ End If
 rs.Close
 conn.Close
 Set rs = Nothing
-Set cmd = Nothing
 Set conn = Nothing
 %>
