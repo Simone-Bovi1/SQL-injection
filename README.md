@@ -11,7 +11,7 @@ L'obiettivo è puramente didattico: evidenziare i rischi della costruzione dinam
 * HTML
 * ASP Classico (Active Server Pages)
 * ADO (ActiveX Data Objects) per la connessione al database
-* Database (generico, esempio con stringa per Access .accdb)
+* Database Access
 
 ## Struttura dei File
 
