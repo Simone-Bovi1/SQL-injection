@@ -1,27 +1,37 @@
 <%
+Dim username, password, rsUtente, sql
 Set conn = Server.CreateObject("ADODB.Connection")
 conn.Open "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Server.MapPath("database.accdb")
 
-user = Request.QueryString("user")
+username = Trim(Request.Form("username"))
+password = Trim(Request.Form("password"))
 
-Set cmd = Server.CreateObject("ADODB.Command")
-cmd.ActiveConnection = conn
-cmd.CommandText = "SELECT * FROM utenti WHERE username = ?"
-cmd.CommandType = 1 ' adCmdText
+If Len(username) > 0 And Len(password) > 0 Then
+    sql = "SELECT * FROM utenti WHERE username = ? AND password = ?"
 
-cmd.Parameters.Append cmd.CreateParameter("username", 200, 1, 255, user) ' adVarChar = 200
+    Set cmd = Server.CreateObject("ADODB.Command")
+    With cmd
+        .ActiveConnection = conn
+        .CommandText = sql
+        .CommandType = 1 'adCmdText
+        .Parameters.Append .CreateParameter(, 200, 1, 50, username)
+        .Parameters.Append .CreateParameter(, 200, 1, 50, password)
+        Set rsUtente = .Execute
+    End With
 
-Set rs = cmd.Execute
+    If Not rsUtente.EOF Then
+        Response.Write "Accesso riuscito!"
+    Else
+        Response.Write "Nome utente o password errati."
+    End If
 
-If Not rs.EOF Then
-    Response.Write("Benvenuto, " & rs("username"))
+    rsUtente.Close
+    Set rsUtente = Nothing
+    Set cmd = Nothing
 Else
-    Response.Write("Utente non trovato.")
+    Response.Write "Inserisci username e password correttamente."
 End If
 
-rs.Close
 conn.Close
-Set rs = Nothing
-Set cmd = Nothing
 Set conn = Nothing
 %>
