@@ -29,10 +29,7 @@ L'obiettivo è puramente didattico: evidenziare i rischi della costruzione dinam
 │   └──	Registrazione_Vulnerabile.asp 
 │   └──	Utenti.accdb
 │   
-├── README.md
-│
-├──Scelta.html
-│
-└──Stile.css           
+└── README.md             
 
-' OR 1=1 OR 'a'='
+Inserire lo username della vittima e poi inserire nel campo password la seguente stringa ' OR 1=1 OR 'a'='
+
