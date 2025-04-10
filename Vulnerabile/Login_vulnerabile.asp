@@ -12,10 +12,11 @@ If username <> "" And password <> "" Then
 
     Set rsUtente = conn.Execute(sql)
 
-    If Not rsUtente.EOF Then
-        Response.Write "Accesso riuscito!"
+    If Not rs.EOF Then
+        Session("username") = rs("username")
+        Response.Redirect("welcome.asp")
     Else
-        Response.Write "Nome utente o password errati."
+        Response.Write("Username o password errati")
     End If
 
     rsUtente.Close
