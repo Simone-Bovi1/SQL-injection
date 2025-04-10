@@ -9,9 +9,9 @@ L'obiettivo è puramente didattico: evidenziare i rischi della costruzione dinam
 ## Tecnologie Utilizzate
 
 * HTML
-* ASP Classico (Active Server Pages)
+* ASP Classico (Active Server Pages) con VBScript
 * ADO (ActiveX Data Objects) per la connessione al database
-* Database Access
+* Database (generico, esempio con stringa per Access .accdb)
 
 ## Struttura dei File
 

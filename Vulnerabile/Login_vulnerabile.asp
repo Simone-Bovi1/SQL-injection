@@ -1,21 +1,29 @@
 <%
 Set conn = Server.CreateObject("ADODB.Connection")
 conn.Open "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Server.MapPath("Database.accdb")
+Dim username, password, rsUtente, sql
 
-user = Request.QueryString("user")
+username = Request.Form("username")
+password = Request.Form("password")
 
-sql = "SELECT * FROM utenti WHERE username = '" & user & "'"
+If username <> "" And password <> "" Then
+    ' Query costruita direttamente con input utente - VULNERABILE
+    sql = "SELECT * FROM utenti WHERE username = '" & username & "' AND password = '" & password & "'"
 
-Set rs = conn.Execute(sql)
+    Set rsUtente = conn.Execute(sql)
 
-If Not rs.EOF Then
-    Response.Write("Benvenuto, " & rs("username"))
+    If Not rsUtente.EOF Then
+        Response.Write "Accesso riuscito!"
+    Else
+        Response.Write "Nome utente o password errati."
+    End If
+
+    rsUtente.Close
+    Set rsUtente = Nothing
 Else
-    Response.Write("Utente non trovato.")
+    Response.Write "Inserisci username e password."
 End If
 
-rs.Close
 conn.Close
-Set rs = Nothing
 Set conn = Nothing
 %>
