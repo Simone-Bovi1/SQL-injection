@@ -29,5 +29,10 @@ L'obiettivo è puramente didattico: evidenziare i rischi della costruzione dinam
 │   └──	Registrazione_Vulnerabile.asp 
 │   └──	Utenti.accdb
 │   
-└── README.md               
+├── README.md
+│
+├──Scelta.html
+│
+└──Stile.css           
 
+' OR 1=1 OR 'a'='
