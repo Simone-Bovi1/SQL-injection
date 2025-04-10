@@ -20,7 +20,8 @@ If Len(username) > 0 And Len(password) > 0 Then
     End With
 
     If Not rsUtente.EOF Then
-        Response.Write "Accesso riuscito!"
+        Session("username") = rs("username") ' Dove rs è il Recordset con i dati dell'utente
+        Response.Redirect "welcome.asp"
     Else
         Response.Write "Nome utente o password errati."
     End If
@@ -29,8 +30,6 @@ If Len(username) > 0 And Len(password) > 0 Then
     Set rsUtente = Nothing
     Set cmd = Nothing
 
-    Session("username") = rs("username") ' Dove rs è il Recordset con i dati dell'utente
-    Response.Redirect "welcome.asp"
 Else
     Response.Write "Inserisci username e password correttamente."
 End If
