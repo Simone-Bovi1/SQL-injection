@@ -5,25 +5,27 @@ Dim username, password
 username = Request.Form("username")
 password = Request.Form("password")
 If username <> "" And password <> "" Then
-
-    ' Connessione al database Access
-    Dim conn, cmd, connectionString
-    Set conn = Server.CreateObject("ADODB.Connection")
-    Set cmd = Server.CreateObject("ADODB.Command")
-
-    connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Server.MapPath("Database.accdb") & ";Persist Security Info=False;"
-
-    conn.Open connectionString
-    cmd.ActiveConnection = conn
-    cmd.CommandText = "INSERT INTO Utenti (Username, [Password]) VALUES (?, ?)"
-    cmd.CommandType = 1 
-    cmd.Parameters.Append cmd.CreateParameter("Username", 200, 1, 255, username)
-    cmd.Parameters.Append cmd.CreateParameter("Password", 200, 1, 255, password)
-    cmd.Execute
 	
-    conn.Close
-    Set cmd = Nothing
-    Set conn = Nothing
+    ' Connessione al database Access
+    Dim connectionString
+    Set objconn = Server.CreateObject("ADODB.Connection")
+	Set objrs = Server.CreateObject("ADODB.Recordset")
+	SQL = "INSERT INTO utenti (Username, Password) VALUES ('"+username+"','"+password+"')"
+    connectionString = "Provider=Microsoft.ACE.OLEDB.12.0;Data Source=" & Server.mappath("Database.accdb")
+	
+	objconn.Open connectionString
+    objrs.Open SQL, objconn, 3, 3
+	if ((objrs.BOF = TRUE) and (objrs.EOF = TRUE)) Then
+		objrs.addNew
+		objrs("Username") = username
+		objrs("Password") = password
+	End If
+	
+    objrs.update
+	objrs.Close
+	Set objrs = Nothing
+	objconn.Close
+	Set objconn = Nothing
 
 Else
     Response.Write "<p>Per favore compila tutti i campi.</p>"
