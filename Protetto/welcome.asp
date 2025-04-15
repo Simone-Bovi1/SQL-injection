@@ -1,5 +1,4 @@
 <%
-' Recupera il nome utente dalla sessione (impostato dopo il login)
 Dim username
 username = Session("username")
 
@@ -11,6 +10,7 @@ End If
 <html>
 <head>
     <title>Benvenuto</title>
+    <link rel="stylesheet" type="text/css" href="StileW.css">
 </head>
 <body>
     <h1>Benvenuto, <%= Server.HTMLEncode(username) %>!</h1>
