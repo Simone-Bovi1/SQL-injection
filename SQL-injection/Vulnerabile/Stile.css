@@ -1,0 +1,124 @@
+/* Importa un font da Google Fonts (Poppins) */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+/* Stili generali per il corpo della pagina */
+body {
+    /* Usa il font importato */
+    font-family: 'Poppins', sans-serif;
+    /* Applica un gradiente lineare come sfondo */
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    /* Mantiene la centratura Flexbox */
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Altezza minima schermo intero */
+    color: #333; /* Colore testo base */
+}
+
+/* Contenitore del modulo di login */
+.login-container {
+    background-color: rgba(255, 255, 255, 0.95); /* Sfondo bianco leggermente trasparente */
+    padding: 40px; /* Più padding interno */
+    border-radius: 12px; /* Angoli più arrotondati */
+    /* Ombra più morbida e diffusa */
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    width: 90%;
+    max-width: 420px; /* Leggermente più largo */
+    box-sizing: border-box;
+    text-align: center; /* Centra testo e elementi inline nel container */
+    backdrop-filter: blur(5px); /* Effetto vetro smerigliato (se lo sfondo è visibile) - opzionale */
+    border: 1px solid rgba(255, 255, 255, 0.2); /* Bordo sottile bianco trasparente - opzionale */
+}
+
+/* Titolo del modulo */
+.login-container h2 {
+    /* Usa il peso '600' (semibold/bold) del font Poppins */
+    font-weight: 600;
+    margin-bottom: 30px; /* Aumenta spazio sotto il titolo */
+    color: #333;
+    font-size: 2em; /* Titolo più grande */
+}
+
+/* Gruppo etichetta + input */
+.input-group {
+    margin-bottom: 25px; /* Aumenta spazio tra gruppi */
+    text-align: left; /* Allinea etichetta e input a sinistra */
+}
+
+/* Etichette */
+.input-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 400; /* Peso '400' (regular) di Poppins */
+    color: #444; /* Colore leggermente più scuro */
+    font-size: 0.95em;
+}
+
+/* Campi di input (testo e password) */
+.input-group input {
+    width: 100%;
+    padding: 14px 18px; /* Più padding interno */
+    /* Bordo più sottile e chiaro */
+    border: 1px solid #ddd;
+    border-radius: 8px; /* Angoli più arrotondati per i campi */
+    box-sizing: border-box;
+    font-size: 1em;
+    font-family: 'Poppins', sans-serif; /* Assicura che anche l'input usi Poppins */
+    transition: border-color 0.3s ease, box-shadow 0.3s ease; /* Transizioni fluide */
+}
+
+/* Stile per il focus (quando si clicca nel campo) */
+.input-group input:focus {
+    /* Colore del bordo che riprende il gradiente */
+    border-color: #764ba2;
+    outline: none;
+    /* Ombra interna più sottile e colorata */
+    box-shadow: 0 0 0 3px rgba(118, 75, 162, 0.15);
+}
+
+/* Bottone di submit */
+button[type="submit"] {
+    width: 100%;
+    padding: 14px 18px;
+    /* Applica un gradiente anche al bottone */
+    background: linear-gradient(90deg, #667eea 0%, #764ba2 100%);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.1em; /* Testo bottone leggermente più grande */
+    font-weight: 600; /* Usa Poppins bold */
+    font-family: 'Poppins', sans-serif;
+    cursor: pointer;
+    /* Transizione per l'hover */
+    transition: opacity 0.3s ease, transform 0.2s ease;
+    margin-top: 15px;
+}
+
+/* Effetto hover sul bottone */
+button[type="submit"]:hover {
+    opacity: 0.9; /* Leggera trasparenza */
+    transform: translateY(-2px); /* Leggero sollevamento */
+}
+
+/* Contenitore dei link aggiuntivi */
+.links {
+    text-align: center;
+    margin-top: 25px;
+    font-size: 0.9em;
+}
+
+/* Stile dei link */
+.links a {
+    /* Colore link che riprende il gradiente */
+    color: #667eea;
+    text-decoration: none;
+    margin: 0 5px; /* Aggiunge un po' di spazio tra i link */
+    transition: color 0.3s ease;
+}
+
+.links a:hover {
+    color: #764ba2; /* Cambia colore all'hover */
+    text-decoration: underline;
+}
